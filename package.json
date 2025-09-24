@@ -2,6 +2,7 @@
   "name": "image-gallery",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://shanosha.github.io/react-image-gallery",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.8.0",
@@ -40,6 +41,5 @@
   },
   "devDependencies": {
     "gh-pages": "^6.3.0"
-  },
-  "homepage": "https://shanosha.github.io/react-image-gallery"
+  }
 }
