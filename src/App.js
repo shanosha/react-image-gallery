@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import ImageGrid from "./ImageGrid";
 
 function App() {
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const response = await fetch(
+          `https://api.unsplash.com/photos/?client_id=57vczRnQzJv9u0QOJDmM07cIXjGgKOKCLd4GORittHI&per_page=12`
+        );
+        const data = await response.json();
+        setImages(data);
+      } catch (error) {
+        console.error("Error fetching images:", error);
+      }
+    };
+
+    fetchImages();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ padding: "20px" }}>
+      <h1 style={{ textAlign: "center" }}>📸 Unsplash Image Gallery</h1>
+      <ImageGrid images={images} />
     </div>
   );
 }
